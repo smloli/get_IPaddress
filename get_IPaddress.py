@@ -14,15 +14,15 @@ class Ip():
         }
 
     def get_ip(self):
-        self.tmp = requests.post(self.ip_url,headers=self.headers)
-        self.result = json.loads(self.tmp.text)
-        return self.result['data']['ip']
+        tmp = requests.post(self.ip_url,headers=self.headers)
+        result = json.loads(tmp.text)
+        return result['data']['ip']
 
     def get_IPaddress(self):
-        self.data = {'ip': self.get_ip()}
-        self.tmp = requests.post(self.ipInfo_url,data = self.data,headers=self.headers)
-        self.res = json.loads(self.tmp.text)
-        print(self.res['data']['area'])
+        data = {'ip': self.get_ip()}
+        tmp = requests.post(self.ipInfo_url,data = data,headers=self.headers)
+        res = json.loads(tmp.text)
+        print(res['data']['area'])
 if __name__ == '__main__':
     ip = Ip()
     ip.get_IPaddress()
